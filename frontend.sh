@@ -20,7 +20,7 @@ VALIDATE $? "Removing default content"
 
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
 cd /usr/share/nginx/html 
-unzip /tmp/frontend.zip
+unzip /tmp/frontend.zip &>>$LOGS_FILE
 VALIDATE $? "Downloading and unzipped frontend code"
 
 rm -rf /etc/nginx/nginx.conf
