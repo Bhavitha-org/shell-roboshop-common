@@ -2,7 +2,7 @@
 source ./common.sh
 
 app_name=redis
-check_root
+CHECK_ROOT
 
 dnf module disable redis -y &>>$LOGS_FILE
 dnf module enable redis:7 -y &>>$LOGS_FILE
