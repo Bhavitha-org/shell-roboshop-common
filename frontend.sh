@@ -6,7 +6,7 @@ app_name=frontend
 APP_DIR=/usr/share/nginx/html #home dir for frontend, /app-> is the home dir for backend components
 CHECK_ROOT
 
-nf module disable nginx -y &>>$LOGS_FILE
+dnf module disable nginx -y &>>$LOGS_FILE
 dnf module enable nginx:1.24 -y &>>$LOGS_FILE
 dnf install nginx -y &>>$LOGS_FILE
 VALIDATE $? "Installing Nginx"
