@@ -3,7 +3,7 @@
 source ./common.sh
 
 app_name=frontend
-APP_DIR=/usr/share/nginx/html #home dir for frontend, /app-> is the home dir for backend components
+app_dir=/usr/share/nginx/html  #home dir for frontend, /app-> is the home dir for backend components
 CHECK_ROOT
 
 dnf module disable nginx -y &>>$LOGS_FILE
