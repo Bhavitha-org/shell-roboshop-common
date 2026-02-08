@@ -1,0 +1,22 @@
+#!/bin/bash
+
+source ./common.sh
+
+app_name=rabbitmq
+CHECK_ROOT
+
+cp $SCRIPT_DIR/rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo
+VALIDATE $? "Added rabbitmq repo"
+
+dnf install rabbitmq-server -y &>>$LOGS_FILE
+VALIDATE $? "Installing RabbitMQ server"
+
+systemctl enable rabbitmq-server &>>$LOGS_FILE
+systemctl start rabbitmq-server
+VALIDATE $? "Enabled and Started rabbitmq"
+
+rabbitmqctl add_user roboshop roboshop123 &>>$LOGS_FILE
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>$LOGS_FILE
+VALIDATE $? "Created users and given permissions"
+
+print_total_time
